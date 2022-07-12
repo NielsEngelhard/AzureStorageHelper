@@ -5,6 +5,9 @@ Azure Storage Helper is an open-source lightweight package that you can include 
 
 You can store all file types in the Azure Blob Storage (.pdf, .png, .docx, .txt, .razor, etc.)
 
+Link to GitHub repo: https://github.com/NielsEngelhard/AzureStorageHelper
+Link to Nuget: https://www.nuget.org/packages/NEICT-AzureStorageHelper
+
 # Installation
 The class library can be installed via the NuGet Package Manager:
 ```
