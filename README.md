@@ -1,9 +1,20 @@
-﻿# Azure Storage Helper
+﻿# NEICT-AzureStorageHelper
 # _Easy use for Azure (blob) Storage_
 
 Azure Storage Helper is an open-source lightweight package that you can include in your .NET projects. The package functions as a facade ([see facade pattern](https://refactoring.guru/design-patterns/facade)) between _Your Application_ and "Azure Storage". This package provides an interface that can be used to perform all the actions you need in a simple way.
 
 You can store all file types in the Azure Blob Storage (.pdf, .png, .docx, .txt, .razor, etc.)
+
+# Installation
+The class library can be installed via the NuGet Package Manager:
+```
+Install-Package NEICT-AzureStorageHelper -Version 1.0.0
+```
+
+Or the .NET CLI:
+```
+dotnet add package NEICT-AzureStorageHelper --version 1.0.0
+```
 
 # Setup
 This package does not work out of the box. You need to add some code to your Program.cs file. The service that is used to communicate with the storage, expects a BlobServiceClient in the constructor. This BlobServiceClient can be provided via Dependency Injection. Adding this code, will solve this:
