@@ -4,19 +4,14 @@ using Azure.Storage.Sas;
 using AzureStorageHelper.Helpers;
 using AzureStorageHelper.Models;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AzureStorageHelper
 {
-    public class AzureBlobStorageService : IBlobStorageService
+    public class AzureBlobStorageFacade : IBlobStorageFacade
     {
         private readonly BlobServiceClient _blobServiceClient;
 
-        public AzureBlobStorageService(BlobServiceClient blobServiceClient)
+        public AzureBlobStorageFacade(BlobServiceClient blobServiceClient)
         {
             _blobServiceClient = blobServiceClient;
         }
@@ -82,7 +77,7 @@ namespace AzureStorageHelper
         }
 
         #region Upload content bytes[]
-        public async Task<Uri> UploadContentAsync(byte[] bytes, string path)
+        public async Task<Uri> UploadContentAsByteArrayAsync(byte[] bytes, string path)
         {
             var blobClient = GetBlobClient(path);
 
@@ -94,7 +89,7 @@ namespace AzureStorageHelper
             return blobClient.Uri;
         }
 
-        public Uri UploadContent(byte[] bytes, string path)
+        public Uri UploadContentAsByteArray(byte[] bytes, string path)
         {
             var blobClient = GetBlobClient(path);
 
@@ -109,7 +104,7 @@ namespace AzureStorageHelper
         #endregion Upload content bytes[]
 
         #region Upload content IFormFile
-        public async Task<Uri> UploadContentAsync(IFormFile file, string path)
+        public async Task<Uri> UploadContentAsIFormFileAsync(IFormFile file, string path)
         {
             var blobClient = GetBlobClient(path);
 
@@ -121,7 +116,7 @@ namespace AzureStorageHelper
             return blobClient.Uri;
         }
 
-        public Uri UploadContent(IFormFile file, string path)
+        public Uri UploadContentAsIFormFile(IFormFile file, string path)
         {
             var blobClient = GetBlobClient(path);
 
@@ -135,7 +130,7 @@ namespace AzureStorageHelper
         #endregion Upload content IFormFile
 
         #region Upload content Stream
-        public async Task<Uri> UploadContentAsync(Stream stream, string path)
+        public async Task<Uri> UploadContentAsStreamAsync(Stream stream, string path)
         {
             var blobClient = GetBlobClient(path);
             await blobClient.UploadAsync(stream, new BlobHttpHeaders { ContentType = path.GetFileOfPath().GetContentType() });
@@ -143,7 +138,7 @@ namespace AzureStorageHelper
             return blobClient.Uri;
         }
 
-        public Uri UploadContent(Stream stream, string path)
+        public Uri UploadContentAsStream(Stream stream, string path)
         {
             var blobClient = GetBlobClient(path);
             blobClient.Upload(stream, new BlobHttpHeaders { ContentType = path.GetFileOfPath().GetContentType() });
