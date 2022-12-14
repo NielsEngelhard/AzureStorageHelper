@@ -4,7 +4,7 @@ on: ["push"]
 
 env:
   PROJECT_PATH: 'AzureStorageHelper.csproj'
-  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
+  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\bin\Release
   NUGET_SOURCE_URL: 'https://api.nuget.org/v3/index.json'
 
 jobs:
