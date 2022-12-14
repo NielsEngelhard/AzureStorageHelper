@@ -1,10 +1,6 @@
 name: "Deploy to NuGet"
 
-on: 
-  push:
-    tags:
-    - 'v*'
-
+on: ['push']
 env:
   PROJECT_PATH: 'AzureStorageHelper.csproj'
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
