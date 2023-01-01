@@ -3,6 +3,7 @@ using Azure.Storage.Blobs.Models;
 using Azure.Storage.Sas;
 using AzureStorageHelper.Helpers;
 using AzureStorageHelper.Models;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Http;
 
 namespace AzureStorageHelper
@@ -146,6 +147,32 @@ namespace AzureStorageHelper
             return blobClient.Uri;
         }
         #endregion Upload content Stream
+
+        #region Upload content IBrowserFile
+        public async Task<Uri> UploadContentAsIBrowserFileAsync(IBrowserFile file, string path)
+        {
+            var blobClient = GetBlobClient(path);
+
+            using (var stream = file.OpenReadStream())
+            {
+                var result = await blobClient.UploadAsync(stream, new BlobHttpHeaders { ContentType = path.GetFileOfPath().GetContentType() });
+            }
+
+            return blobClient.Uri;
+        }
+
+        public Uri UploadContentAsIBrowserFile(IBrowserFile file, string path)
+        {
+            var blobClient = GetBlobClient(path);
+
+            using (var stream = file.OpenReadStream())
+            {
+                var result = blobClient.Upload(stream, new BlobHttpHeaders { ContentType = path.GetFileOfPath().GetContentType() });
+            }
+
+            return blobClient.Uri;
+        }
+        #endregion Upload content IBrowserFile
 
         /// <summary>
         /// Strips the storage path from an url (if an url is provided)

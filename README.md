@@ -155,15 +155,18 @@ This chapter contains a copy of the class that contains all the methods for the 
 ```
         public Task<bool> DeleteStorageItemAsync(string path);
         public bool DeleteStorageItem(string path);
-        
+
         public Uri GetTempBlobLink(string path, int minutes = 1);
-        
-        public Task<Uri> UploadContentAsync(byte[] bytes, string path);
-        public Task<Uri> UploadContentAsync(IFormFile file, string path);
-        public Task<Uri> UploadContentAsync(Stream stream, string path);
-        public Uri UploadContent(byte[] bytes, string path);
-        public Uri UploadContent(IFormFile file, string path);
-        public Uri UploadContent(Stream stream, string path);
+
+        public Task<Uri> UploadContentAsByteArrayAsync(byte[] bytes, string path);
+        public Task<Uri> UploadContentAsIFormFileAsync(IFormFile file, string path);
+        public Task<Uri> UploadContentAsIBrowserFileAsync(IBrowserFile file, string path);
+        public Task<Uri> UploadContentAsStreamAsync(Stream stream, string path);
+
+        public Uri UploadContentAsByteArray(byte[] bytes, string path);
+        public Uri UploadContentAsIFormFile(IFormFile file, string path);
+        public Uri UploadContentAsIBrowserFile(IBrowserFile file, string path);
+        public Uri UploadContentAsStream(Stream stream, string path);
 
         public StorageItemInfo GetRawStorageItem(string path);
         public Task<StorageItemInfo> GetRawStorageItemAsync(string path);
@@ -207,14 +210,16 @@ Below are the functions from the interface with explanation
 
         /// <summary>
         /// Upload content to the blob storage. 
-        /// Content can be uploaded as a byte array, IFormFile or Stream.
+        /// Content can be uploaded as a byte array, IFormFile, IBrowserFile or Stream.
         /// </summary>
         public Task<Uri> UploadContentAsByteArrayAsync(byte[] bytes, string path);
         public Task<Uri> UploadContentAsIFormFileAsync(IFormFile file, string path);
+        public Task<Uri> UploadContentAsIBrowserFileAsync(IBrowserFile file, string path);
         public Task<Uri> UploadContentAsStreamAsync(Stream stream, string path);
 
         public Uri UploadContentAsByteArray(byte[] bytes, string path);
         public Uri UploadContentAsIFormFile(IFormFile file, string path);
+        public Uri UploadContentAsIBrowserFile(IBrowserFile file, string path);
         public Uri UploadContentAsStream(Stream stream, string path);
 
         /// <summary>

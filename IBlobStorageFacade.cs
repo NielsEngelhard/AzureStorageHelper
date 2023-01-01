@@ -1,4 +1,5 @@
 ﻿using AzureStorageHelper.Models;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Http;
 
 namespace AzureStorageHelper
@@ -43,10 +44,12 @@ namespace AzureStorageHelper
         /// </summary>
         public Task<Uri> UploadContentAsByteArrayAsync(byte[] bytes, string path);
         public Task<Uri> UploadContentAsIFormFileAsync(IFormFile file, string path);
+        public Task<Uri> UploadContentAsIBrowserFileAsync(IBrowserFile file, string path);
         public Task<Uri> UploadContentAsStreamAsync(Stream stream, string path);
 
         public Uri UploadContentAsByteArray(byte[] bytes, string path);
         public Uri UploadContentAsIFormFile(IFormFile file, string path);
+        public Uri UploadContentAsIBrowserFile(IBrowserFile file, string path);
         public Uri UploadContentAsStream(Stream stream, string path);
 
         /// <summary>
