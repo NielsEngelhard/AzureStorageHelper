@@ -32,7 +32,7 @@ builder.Services.AddSingleton(x =>
 
 This class library provides an interface called IBlobStorageFacade. This interface can be injected in your classes (services). If you want to inject the IBlobStorageInterface in your services (and you probably want), you need to add the following line too, to the Program.cs file.
 ```
-builder.Services.AddScoped<IAzureBlobStorageFacade, AzureBlobStorageFacade>();
+builder.Services.AddScoped<IBlobStorageFacade, AzureBlobStorageFacade>();
 ```
 
 
